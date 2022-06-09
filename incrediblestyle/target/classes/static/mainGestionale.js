@@ -36,7 +36,7 @@ $(document).ready(function () {
     // funzione chiamata quando faccio click sul pulsante aggiungi 
     $("#btn-aggiungi-modale").on("click", function () {
         $("#modale-prodotto").hide();
-        const prodotto = { nome: $("#nome"), foto: $("#foto"), prezzo: $("#prezzo"), colore: $("#colore"), taglia: $("#taglia"), quantita: $("#sesso"), sesso: $("#sesso"), categoria: { id: $("#categorie").val(), tipo: null } };
+        const prodotto = { nome: $("#nome"), foto: $("#foto"), prezzo: $("#prezzo"), colore: $("#colore"), taglia: $("#taglia"), quantita: $("#quantita"), sesso: $("#sesso"), categoria: { id: $("#categorie").val(), tipo: null } };
         console.log(prodotto);
         aggiungiProdotto(prodotto);
 
