@@ -133,7 +133,7 @@ $(document).ready(function () {
                 'Content-Type': 'application/json'
             },
             data: JSON.stringify(categ),
-            url: "articoli",
+            url: "categorie",
             type: "POST",
             success: function () {
                 $("#tabella-categoria").html('');
