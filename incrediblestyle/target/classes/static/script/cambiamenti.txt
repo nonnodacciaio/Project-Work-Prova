@@ -1,3 +1,5 @@
 qunatita -> sesso
 aggiunto id in html
 mettere .val nel json 
+
+cambiare id in bottoni elimina e modifica

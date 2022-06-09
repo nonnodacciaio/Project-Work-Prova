@@ -16,9 +16,9 @@ $(document).ready(function () {
                         <div class="cella">${p.categoria.tipo}</div>
 
 				   		<div class="cella">
-				   		<button class='btn' data-id='${p.codiceArticolo}'>Elimina</button></div>
+				   		<button class='btn-elimina' data-id='${p.codiceArticolo}'>Elimina</button></div>
                         <div class="cella">
-				   		<button class='btn' data-id='${p.codiceArticolo}'>Modifica</button>
+				   		<button class='btn-modifica' data-id='${p.codiceArticolo}'>Modifica</button>
 				   		</div>
 				   </div>`).appendTo($('#tabella-articoli'));
             }
@@ -63,6 +63,24 @@ $(document).ready(function () {
         })
     }
 
+    // delete-elimina prodotto
+    $('#tabella-articoli').on('click', '.btn-elimina', function() {
+		const id = $(this).attr('data-id');
+		eliminaProdotto(id, $(this).parent().parent());
+	})
+
+
+    function eliminaProdotto(id, htmlElement) {
+
+		$.ajax({
+		
+			url: `articoli/${id}`,
+			type: 'DELETE',
+			success: function() {
+				htmlElement.remove();
+			}
+		});
+	}
 
 
 
@@ -78,9 +96,9 @@ $(document).ready(function () {
                         <div class= "cella">${c.tipo}</div>
             
                         <div class= "cella">
-                        <button class="btn" data-id='${c.id}'>Elimina</button></div>
-                        <div class="ccella">
-				   		<button class="btn" data-id='${c.id}'>Modifica</button></div>
+                        <button class="btn-elimina-categoria" data-id='${c.id}'>Elimina</button></div>
+                        <div class="cella">
+				   		<button class="btn-modifica-categoria" data-id='${c.id}'>Modifica</button></div>
                     </div>`).appendTo($('#tabella-categoria'));
 
                 $(`<option value="${c.id}">${c.tipo}</option>`).appendTo($("#categorie"));
@@ -123,5 +141,27 @@ $(document).ready(function () {
             }
         })
     }
+
+    // delete-elimina categoria
+    $('#tabella-categoria').on('click', '.btn-elimina-categoria', function() {
+		const id = $(this).attr('data-id');
+		eliminaCategoria(id, $(this).parent().parent());
+	})
+
+
+    function eliminaCategoria(id, htmlElement) {
+
+		$.ajax({
+		
+			url: `categorie/${id}`,
+			type: 'DELETE',
+			success: function() {
+				htmlElement.remove();
+			}
+		});
+	}
+
+
+
 })
 
